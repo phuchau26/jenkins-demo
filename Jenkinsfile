@@ -19,9 +19,9 @@ pipeline {
       }
     }
 
-    stage('Check'){
+    stage('Pool'){
       steps{
-        echo 'Checking...'
+        echo 'Pooling...'
       }
     }
   }
