@@ -1,22 +1,14 @@
 pipeline {
-  agent {
-    docker {
-      image 'node:18'
+    agent any 
+    stages {
+        stage('Build') {
+            steps {
+                // 'node' là tên bạn đặt trong Manage Jenkins -> Tools
+                nodejs('node') { 
+                    sh 'node -v'
+                    sh 'npm install'
+                }
+            }
+        }
     }
-  }
-
-  stages {
-    stage('Build'){
-      steps{
-        echo 'Building Application using NodeJS.....'
-        sh 'npm install'
-      }
-    }
-
-    stage('Test'){
-      steps{
-        echo 'Testing...'
-      }
-    }
-  }
 }
