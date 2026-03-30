@@ -5,13 +5,16 @@ pipeline {
     }
 
     stages {
-        stage('Build') {
+        stage('Checkout') {
             steps {
-                // 'node' là tên bạn đặt trong Manage Jenkins -> Tools
-                nodejs('node') { 
-                    sh 'node -v'
-                    sh 'npm install'
-                }
+                echo 'Đang tải code từ GitHub...'
+            }
+        }
+        stage('Demo Build') {
+            steps {
+                echo 'Đây là dự án demo, không cần NodeJS thật.'
+                sh 'ls -la' // Lệnh này để liệt kê các file Jenkins vừa kéo về
+                echo 'Build thành công!'
             }
         }
     }
