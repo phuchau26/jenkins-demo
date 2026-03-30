@@ -3,7 +3,10 @@ pipeline {
   stages{
     stage('Build'){
       steps{
-        echo 'Building...'
+        nodejs('Node'){
+          echo 'Building Application using NodeJS.....'
+          sh 'npm install'
+        }
       }
     }
 
@@ -13,16 +16,6 @@ pipeline {
       }
     }
 
-    stage('Deploy'){
-      steps{
-        echo 'Deploying...'
-      }
-    }
-
-    stage('Pool'){
-      steps{
-        echo 'Pooling...'
-      }
-    }
+    
   }
 }
