@@ -1,12 +1,15 @@
 pipeline {
-  agent any
-  stages{
+  agent {
+    docker {
+      image 'node:18'
+    }
+  }
+
+  stages {
     stage('Build'){
       steps{
-        nodejs('Node'){
-          echo 'Building Application using NodeJS.....'
-          sh 'npm install'
-        }
+        echo 'Building Application using NodeJS.....'
+        sh 'npm install'
       }
     }
 
@@ -15,7 +18,5 @@ pipeline {
         echo 'Testing...'
       }
     }
-
-    
   }
 }
